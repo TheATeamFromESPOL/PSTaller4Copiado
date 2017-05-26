@@ -26,11 +26,16 @@ int main(void){
 int cifrarFrase(char frase[], int espaciado){
 	int mov;
 	for(int i=0;i<strlen(frase);i++){
-		mov = indiceDeCaracter(frase[i]) + espaciado;
-		if(mov>=sizeof(alfabeto)){
-			mov = mov%26;
+		if(frase[i]==' '){
+			cifrado[i] = ' ';
 		}
-		cifrado[i] = alfabeto[mov];
+		else{
+			mov = indiceDeCaracter(frase[i]) + espaciado;
+			if(mov>=sizeof(alfabeto)){
+				mov = mov%26;
+			}
+			cifrado[i] = alfabeto[mov];
+		}
 	}
 	return 0;
 }
