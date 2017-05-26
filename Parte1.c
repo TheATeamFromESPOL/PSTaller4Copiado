@@ -32,7 +32,7 @@ int cifrarFrase(char frase[], int espaciado){
 		else{
 			mov = indiceDeCaracter(frase[i]) + espaciado;
 			if(mov>=sizeof(alfabeto)){
-				mov = mov%26;
+				mov = mov%sizeof(alfabeto);
 			}
 			cifrado[i] = alfabeto[mov];
 		}
