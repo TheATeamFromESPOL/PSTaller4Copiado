@@ -98,33 +98,25 @@ int cifrarFrase(char frase[], int espaciado){
 
 int morseFrase(char frase[]){
 	for(int i=0;i<strlen(frase);i++){
-		if(frase[i]==' '){
-                        strcat(morseado,"/");
-                }
-		else{
-			int indice;
-			int a = frase[i];
-			if(a>=97 && a<=122){
-				a = a - 32;
-			}
-			if(a>=48 && a<=57){
-				int num = a - 48;
-				char c = (char)num;
-				indice = indiceMorse(c);
-				strcat(morseado,morse[indice]);
-			}else if(a>=65 && a<=90){
-				char c = a;
-				indice = indiceMorse(c);
-				strcat(morseado,morse[indice]);
-			}
+		int indice;
+		int a = frase[i];
+		if(a>=97 && a<=122){
+			a = a - 32;
 		}
-		strcat(morseado," ");
+		char c = a;
+		indice = indiceMorse(c);
+		if(indice!=100){
+			strcat(morseado,morse[indice]);
+		}
+		else{
+			strcat(morseado,"*");
+		}
 	}
 	return 0;
 }
 
 int indiceMorse(char caracter){
-	int a = 0;
+	int a = 100;
 	for(int i=0;i<37;i++){
 		if(cambios[i]==caracter){
 			a = i;
