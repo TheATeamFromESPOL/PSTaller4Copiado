@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 #define TLINEA 500
 
 char cifrado[TLINEA];
@@ -22,7 +24,8 @@ int main(int argc, char *argv[0]){
 		printf("%s\n",cifrado);
 	}
 	else if(argc==3){
-		int num = argv[1][0];
+		int num = atoi(argv[1]);
+		printf("%d",num);
 		cifrarFrase(argv[2],num);
 		printf("Frase cifrada: ");
                 printf("%s\n",cifrado);
