@@ -3,9 +3,7 @@
 #define TLINEA 500
 
 char cifrado[TLINEA];
-int indiceDeCaracter(char caracter);
 int cifrarFrase(char frase[], int espaciado);
-char alfabeto[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
 int main(void){
 	char frase[TLINEA];
@@ -30,23 +28,14 @@ int cifrarFrase(char frase[], int espaciado){
 			cifrado[i] = ' ';
 		}
 		else{
-			mov = indiceDeCaracter(frase[i]) + espaciado;
-			if(mov>=sizeof(alfabeto)){
-				mov = mov%sizeof(alfabeto);
+			int a = frase[i];
+			mov = a + espaciado;
+			while(!((mov>=65 && mov<=90)||(mov>=97 && mov<=122))){
+				mov = mov - 26;
 			}
-			cifrado[i] = alfabeto[mov];
+			char letra = mov;
+			cifrado[i] = letra;
 		}
 	}
 	return 0;
-}
-
-int indiceDeCaracter(char caracter){
-	int pos;
-	for(int i=0;i<sizeof(alfabeto);i++){
-		if(alfabeto[i]==caracter){
-			pos=i;
-		}
-	}
-	printf("%d",pos);
-	return pos;
 }
