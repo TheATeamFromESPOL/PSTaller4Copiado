@@ -12,10 +12,10 @@ int main(void){
 	scanf("%[^\n]s",frase);
 	printf("Ingrese la cantidad de espacios: ");
 	scanf("%d",&num);
-	printf("%s %d\n",frase,num);
-	int longitud = strlen(frase);
-	printf("%s %d\n","Longitud de frase",longitud);
-	printf("\n");
+	//printf("%s %d\n",frase,num);
+	//int longitud = strlen(frase);
+	//printf("%s %d\n","Longitud de frase",longitud);
+	//printf("\n");*/
 	cifrarFrase(frase,num);
 	printf("Frase cifrada: ");
 	printf("%s\n",cifrado);
@@ -30,11 +30,32 @@ int cifrarFrase(char frase[], int espaciado){
 		else{
 			int a = frase[i];
 			mov = a + espaciado;
-			while(!((mov>=65 && mov<=90)||(mov>=97 && mov<=122))){
-				mov = mov - 26;
+			if(espaciado>=0){
+				if(a>=65 && a<=90){
+					while(mov<=65 || mov>=90){
+						mov = mov - 26;
+					}
+				}
+				if(a>=97 && a<=122){
+                                        while(mov<=97 || mov>=122){
+                                                mov = mov - 26;
+                                        }
+                                }
+			}
+			else{
+                                if(a>=65 && a<=90){
+                                        while(mov<=65 || mov>=90){
+                                                mov = mov + 26;
+                                        }
+                                }
+                                if(a>=97 && a<=122){
+                                        while(mov<=97 || mov>=122){
+                                                mov = mov + 26;
+                                        }
+                                }
 			}
 			char letra = mov;
-			cifrado[i] = letra;
+                        cifrado[i] = letra;
 		}
 	}
 	return 0;
