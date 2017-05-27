@@ -36,6 +36,7 @@ int main(int argc, char *argv[0]){
 		printf("%s\n",cifrado);
 		printf("Morse: ");
                 morseFrase(frase);
+		printf("%s",*morseado);
 	}
 	else if(argc==3){
 		int num = atoi(argv[1]);
@@ -45,6 +46,7 @@ int main(int argc, char *argv[0]){
                 printf("%s\n",cifrado);
 		printf("Morse: ");
 		morseFrase(argv[2]);
+		printf("%s",*morseado);
 	}
 	else{
 		printf("Debe colocar la correcta cantidad de argumentos\n");
@@ -94,7 +96,7 @@ int cifrarFrase(char frase[], int espaciado){
 int morseFrase(char frase[]){
 	for(int i=0;i<strlen(frase);i++){
 		if(frase[i]==' '){
-                        *morseado[i] = '/';
+                        morseado[i] = "/";
                 }
 		else{
 			int indice;
@@ -125,4 +127,13 @@ int indiceMorse(char caracter){
 		}
 	}
 	return a;
+}
+
+int imprMorse(char *morseado[]){
+	for(int i=0;sizeof(*morseado);i++){
+		if(morseado[i]!='\0'){
+			printf("%s ",morseado[i]);
+		}
+	}
+	return 0;
 }
