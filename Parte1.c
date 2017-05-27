@@ -37,21 +37,21 @@ int cifrarFrase(char frase[], int espaciado){
 					}
 				}
 				if(a>=97 && a<=122){
-                                        while(mov<=97 || mov>=122){
-                                                mov = mov - 26;
-                                        }
-                                }
+                                       	while(mov<=97 || mov>=122){
+                                               	mov = mov - 26;
+                                       	}
+				}
 			}
 			else{
                                 if(a>=65 && a<=90){
-                                        while(mov<=65 || mov>=90){
-                                                mov = mov + 26;
-                                        }
+                                       	while(mov<=65 || mov>=90){
+                                               	mov = mov + 26;
+                                       	}
                                 }
                                 if(a>=97 && a<=122){
-                                        while(mov<=97 || mov>=122){
-                                                mov = mov + 26;
-                                        }
+                                       	while(mov<=97 || mov>=122){
+                                               	mov = mov + 26;
+                                       	}
                                 }
 			}
 			char letra = mov;
