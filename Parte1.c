@@ -5,20 +5,28 @@
 char cifrado[TLINEA];
 int cifrarFrase(char frase[], int espaciado);
 
-int main(void){
-	char frase[TLINEA];
-	int num;
-	printf("Ingrese la frase a cifrar: ");
-	scanf("%[^\n]s",frase);
-	printf("Ingrese la cantidad de espacios: ");
-	scanf("%d",&num);
-	//printf("%s %d\n",frase,num);
-	//int longitud = strlen(frase);
-	//printf("%s %d\n","Longitud de frase",longitud);
-	//printf("\n");*/
-	cifrarFrase(frase,num);
-	printf("Frase cifrada: ");
-	printf("%s\n",cifrado);
+int main(int argc, char *argv[0]){
+	if(argc==1){
+		char frase[TLINEA];
+		int num;
+		printf("Ingrese la frase a cifrar: ");
+		scanf("%[^\n]s",frase);
+		printf("Ingrese la cantidad de espacios: ");
+		scanf("%d",&num);
+		//printf("%s %d\n",frase,num);
+		//int longitud = strlen(frase);
+		//printf("%s %d\n","Longitud de frase",longitud);
+		//printf("\n");*/
+		cifrarFrase(frase,num);
+		printf("Frase cifrada: ");
+		printf("%s\n",cifrado);
+	}
+	else if(argc==3){
+		int num = argv[1][0];
+		cifrarFrase(argv[2],num);
+		printf("Frase cifrada: ");
+                printf("%s\n",cifrado);
+	}
 }
 
 int cifrarFrase(char frase[], int espaciado){
