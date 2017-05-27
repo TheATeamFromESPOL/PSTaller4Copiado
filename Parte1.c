@@ -18,7 +18,6 @@ char morseado[TLINEA];
 int cifrarFrase(char frase[], int espaciado);
 int morseFrase(char frase[]);
 int indiceMorse(char caracter);
-//int imprMorse(char morseado[][]);
 
 int main(int argc, char *argv[0]){
 	if(argc==1){
@@ -28,16 +27,11 @@ int main(int argc, char *argv[0]){
 		scanf("%[^\n]s",frase);
 		printf("Ingrese la cantidad de espacios: ");
 		scanf("%d",&num);
-		//printf("%s %d\n",frase,num);
-		//int longitud = strlen(frase);
-		//printf("%s %d\n","Longitud de frase",longitud);
-		//printf("\n");*/
 		cifrarFrase(frase,num);
 		printf("Frase cifrada: ");
 		printf("%s\n",cifrado);
 		printf("Morse: ");
                 morseFrase(frase);
-		//imprMorse(morseado);
 		printf("%s\n",morseado);
 	}
 	else if(argc==3){
@@ -48,7 +42,6 @@ int main(int argc, char *argv[0]){
                 printf("%s\n",cifrado);
 		printf("Morse: ");
 		morseFrase(argv[2]);
-		//imprMorse(morseado);
 		printf("%s\n",morseado);
 	}
 	else{
@@ -124,12 +117,3 @@ int indiceMorse(char caracter){
 	}
 	return a;
 }
-/*
-int imprMorse(char morseado[][]){
-	for(int i=0;i<sizeof(morseado);i++){
-		printf("%s%s",morseado[i],"");
-	}
-	printf("\n");
-	return 0;
-}
-*/
