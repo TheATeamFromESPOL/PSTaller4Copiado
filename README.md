@@ -1,8 +1,8 @@
 # PS-Taller4
-#Taller 4 de Programación de Sistemas
-#
-#
+Taller 4 de Programación de Sistemas
+
+
 #Integrantes:
-# - Arias Lucio
-# - Arízaga Luis
+- Arias Lucio
+- Arízaga Luis
 
