@@ -1,5 +1,8 @@
 #include <string.h>
 
+char abecedario[26]= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
+'P','Q','R','S','T','U','V','W','X','Y','Z'}
+
 char* cifradoCiclico(char* mensaje,int llave){
 	int mov;
 	char *cifrado = "";
@@ -48,8 +51,27 @@ char* cifradoCiclico(char* mensaje,int llave){
 char* cifradoAutollave(char* mensaje, char* llave){
 
 }
-
-char* cifradoContrasena(char* mensaje, char* llave){
-
-}
 */
+char* cifradoContrasena(char* mensaje, char* llave){
+	int longitud = strlen(mensaje);
+	int num;
+	char abecedarioNuevo[26];
+	for(int i=0;i<26;i++){
+		if(i<longitud){
+			abecedarioNuevo[i] = mensaje[i];
+		}
+		else{
+			num = i-longitud;
+			abecedarioNuevo[i] = abecedario[num];
+		}
+	}
+	char* cifrado;
+	for(int j=0;j<longitud;j++){
+		for(int k=0;k<26;i++){
+			if(abecedario[k]==mensaje[j]){
+				cifrado[j]=abecedarioNuevo[k];
+			}
+		}
+	}
+	return cifrado;
+}
