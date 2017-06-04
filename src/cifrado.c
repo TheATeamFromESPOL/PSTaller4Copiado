@@ -3,6 +3,17 @@
 char abecedario[26]= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
 'P','Q','R','S','T','U','V','W','X','Y','Z'}
 
+char tabla[26][26]={
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ","BCDEFGHIJKLMNOPQRSTUVWXYZA","CDEFGHIJKLMNOPQRSTUVWXYZAB",
+"DEFGHIJKLMNOPQRSTUVWXYZABC","EFGHIJKLMNOPQRSTUVWXYZABCD","FGHIJKLMNOPQRSTUVWXYZABCDE",
+"GHIJKLMNOPQRSTUVWXYZABCDEF","HIJKLMNOPQRSTUVWXYZABCDEFG","IJKLMNOPQRSTUVWXYZABCDEFGH",
+"JKLMNOPQRSTUVWXYZABCDEFGHI","KLMNOPQRSTUVWXYZABCDEFGHIJ","LMNOPQRSTUVWXYZABCDEFGHIJK",
+"MNOPQRSTUVWXYZABCDEFGHIJKL","NOPQRSTUVWXYZABCDEFGHIJKLM","OPQRSTUVWXYZABCDEFGHIJKLMN",
+"PQRSTUVWXYZABCDEFGHIJKLMNO","QRSTUVWXYZABCDEFGHIJKLMNOP","RSTUVWXYABCDEFGHIJKLMNOPQZ",
+"STUVWXYZABCDEFGHIJKLMNOPQR","TUVWXYZABCDEFGHIJKLMNOPQRS","UVWXYZABCDEFGHIJKLMNOPQRST",
+"VWXYZABCDEFGHIJKLMNOPQRSTU","WXYZABCDEFGHIJKLMNOPQRSTUV","XYZABCDEFGHIJKLMNOPQRSTUVW"
+,"YZABCDEFGHIJKLMNOPQRSTUVWX","ZABCDEFGHIJKLMNOPQRSTUVWXY"}
+
 char* cifradoCiclico(char* mensaje,int llave){
 	int mov;
 	char *cifrado = "";
@@ -47,11 +58,52 @@ char* cifradoCiclico(char* mensaje,int llave){
 	return cifrado;
 }
 
-/*
-char* cifradoAutollave(char* mensaje, char* llave){
 
+char* cifradoAutollave(char* mensaje, char* llave){
+	int longitud = strlen(mensaje);
+	int a,b= 0;
+	char* anexado;
+	char* cifrado;
+	for(int i=0;i<longitud;i++){
+		if(llave[i]!='\0'){
+			if(mensaje[i]!=' '){
+				anexado[i]=llave[b];
+				b++;
+			}
+			else{
+				anexado[i]=' ';
+			}
+		}
+		else{
+			if(mensaje[i]!=' '){
+				if(mensaje[a]==' '){
+					a++;
+				}
+				anexado[i]=mensaje[a];
+				a++;
+			}
+			else{
+				anexado[i]=' ';
+			}
+		}
+	}
+	
+	for(int j=0;j<longitud;j++){
+		int x,y;
+		char ch = mensaje[j];
+		char d = anexado[j];
+		x = ind(ch);
+		y = ind(d);
+		if(x==27){
+			cifrado[j]=' ';
+		}
+		else{
+			cifrado[j]=tabla[x][y];
+		}		
+	}
+	return cifrado;
 }
-*/
+
 char* cifradoContrasena(char* mensaje, char* llave){
 	int longitud = strlen(mensaje);
 	int num;
@@ -74,4 +126,14 @@ char* cifradoContrasena(char* mensaje, char* llave){
 		}
 	}
 	return cifrado;
+}
+
+int ind(char c){
+	int n = 27;
+        for(int i=0;i<26;i++){
+                if(abecedario[i]==c){
+                        n = i;
+                }
+        }
+        return n;
 }
