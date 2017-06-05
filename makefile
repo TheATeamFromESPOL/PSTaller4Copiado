@@ -15,7 +15,7 @@ dinamico: main.o cifrado.o codificacion.o lib.so
 	gcc -L./ -I./ ./obj/main.o ./obj/cifrado.o ./obj/codificacion.o -lm -o $@
 
 estatico: main.o lib.a
-	gcc ./obj/main.o ./lib/lib.a -lm -o $@
+	gcc ./obj/main.o ./lib/lib.a -lm -o ./lib/$@
 
 clean:
 	rm -f ./obj/*.o
