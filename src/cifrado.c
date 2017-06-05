@@ -64,7 +64,7 @@ char* cifradoAutollave(char* mensaje, char* llave){
 	int a= 0;
 	int b=0;
 	char anexado[longitud+1];
-	char cifrado[longitud+1];
+	char *cifrado = "";
 	for(int i=0;i<longitud;i++){
 		if(b<strlen(llave)){
 			if(mensaje[i]!=' '){
@@ -117,15 +117,15 @@ char* cifradoContrasena(char* mensaje, char* llave){
 	int num;
 	char abecedarioNuevo[26];
 	for(int i=0;i<26;i++){
-		if(i<str(llave)){
+		if(i<strlen(llave)){
 			abecedarioNuevo[i] = llave[i];
 		}
 		else{
-			num = i-str(llave);
+			num = i-strlen(llave);
 			abecedarioNuevo[i] = abecedario[num];
 		}
 	}
-	char cifrado[longitud];
+	char *cifrado = "";
 	for(int j=0;j<longitud;j++){
 		if (mensaje[j]==' '){
 			cifrado[j]=' ';
