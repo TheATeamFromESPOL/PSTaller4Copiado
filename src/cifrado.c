@@ -1,7 +1,7 @@
 #include <string.h>
 
 char abecedario[26]= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
-'P','Q','R','S','T','U','V','W','X','Y','Z'}
+'P','Q','R','S','T','U','V','W','X','Y','Z'};
 
 char tabla[26][26]={
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ","BCDEFGHIJKLMNOPQRSTUVWXYZA","CDEFGHIJKLMNOPQRSTUVWXYZAB",
@@ -12,7 +12,7 @@ char tabla[26][26]={
 "PQRSTUVWXYZABCDEFGHIJKLMNO","QRSTUVWXYZABCDEFGHIJKLMNOP","RSTUVWXYABCDEFGHIJKLMNOPQZ",
 "STUVWXYZABCDEFGHIJKLMNOPQR","TUVWXYZABCDEFGHIJKLMNOPQRS","UVWXYZABCDEFGHIJKLMNOPQRST",
 "VWXYZABCDEFGHIJKLMNOPQRSTU","WXYZABCDEFGHIJKLMNOPQRSTUV","XYZABCDEFGHIJKLMNOPQRSTUVW"
-,"YZABCDEFGHIJKLMNOPQRSTUVWX","ZABCDEFGHIJKLMNOPQRSTUVWXY"}
+,"YZABCDEFGHIJKLMNOPQRSTUVWX","ZABCDEFGHIJKLMNOPQRSTUVWXY"};
 
 char* cifradoCiclico(char* mensaje,int llave){
 	int mov;
@@ -61,11 +61,12 @@ char* cifradoCiclico(char* mensaje,int llave){
 
 char* cifradoAutollave(char* mensaje, char* llave){
 	int longitud = strlen(mensaje);
-	int a,b= 0;
-	char* anexado;
-	char* cifrado;
+	int a= 0;
+	int b=0;
+	char anexado[longitud+1];
+	char cifrado[longitud+1];
 	for(int i=0;i<longitud;i++){
-		if(llave[i]!='\0'){
+		if(b<strlen(llave)){
 			if(mensaje[i]!=' '){
 				anexado[i]=llave[b];
 				b++;
@@ -76,9 +77,6 @@ char* cifradoAutollave(char* mensaje, char* llave){
 		}
 		else{
 			if(mensaje[i]!=' '){
-				if(mensaje[a]==' '){
-					a++;
-				}
 				anexado[i]=mensaje[a];
 				a++;
 			}
@@ -92,8 +90,18 @@ char* cifradoAutollave(char* mensaje, char* llave){
 		int x,y;
 		char ch = mensaje[j];
 		char d = anexado[j];
-		x = ind(ch);
-		y = ind(d);
+		x = 27;
+		for(int i=0;i<26;i++){
+		        if(abecedario[i]==ch){
+		                x = i;
+		        }
+		}
+		y = 27;
+		for(int i=0;i<26;i++){
+		        if(abecedario[i]==d){
+		                y = i;
+		        }
+		}
 		if(x==27){
 			cifrado[j]=' ';
 		}
@@ -109,31 +117,28 @@ char* cifradoContrasena(char* mensaje, char* llave){
 	int num;
 	char abecedarioNuevo[26];
 	for(int i=0;i<26;i++){
-		if(i<longitud){
-			abecedarioNuevo[i] = mensaje[i];
+		if(i<str(llave)){
+			abecedarioNuevo[i] = llave[i];
 		}
 		else{
-			num = i-longitud;
+			num = i-str(llave);
 			abecedarioNuevo[i] = abecedario[num];
 		}
 	}
-	char* cifrado;
+	char cifrado[longitud];
 	for(int j=0;j<longitud;j++){
-		for(int k=0;k<26;i++){
-			if(abecedario[k]==mensaje[j]){
-				cifrado[j]=abecedarioNuevo[k];
+		if (mensaje[j]==' '){
+			cifrado[j]=' ';
+		}
+		else{
+			for(int k=0;k<26;k++){
+				if(abecedario[k]==mensaje[j]){
+					cifrado[j]=abecedarioNuevo[k];
+				}
 			}
 		}
+		
 	}
 	return cifrado;
 }
 
-int ind(char c){
-	int n = 27;
-        for(int i=0;i<26;i++){
-                if(abecedario[i]==c){
-                        n = i;
-                }
-        }
-        return n;
-}
